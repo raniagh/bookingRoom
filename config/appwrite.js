@@ -1,9 +1,9 @@
-const { Client, Account, Databases, Storage } = require("node-appwrite");
+import { Client, Databases, Account, Storage } from "node-appwrite";
 
-//Admin client
+// Admin Client
 const createAdminClient = async () => {
   const client = new Client()
-    .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOIN)
+    .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT)
     .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT)
     .setKey(process.env.NEXT_APPWRITE_KEY);
 
@@ -20,15 +20,15 @@ const createAdminClient = async () => {
   };
 };
 
-//session client
-const createSessionClient = async (sessions) => {
+const createSessionClient = async (session) => {
   const client = new Client()
-    .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOIN)
+    .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT)
     .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT);
 
   if (session) {
     client.setSession(session);
   }
+
   return {
     get account() {
       return new Account(client);

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "@/assets/images/logo.svg";
+import logo from "../assets/images/logo.svg";
 import Link from "next/link";
 import { FaBuilding, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 
@@ -27,7 +27,7 @@ const Header = () => {
                 </Link>
                 {/* <!-- Logged In Only --> */}
                 <Link
-                  href='/bookings.html'
+                  href='/bookings'
                   className='rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white'
                 >
                   Bookings
@@ -46,13 +46,13 @@ const Header = () => {
             <div className='ml-4 flex items-center md:ml-6'>
               {/* <!-- Logged Out Only --> */}
               <Link
-                href='login.html'
+                href='/login'
                 className='mr-3 text-gray-800 hover:text-gray-600'
               >
                 <FaSignInAlt className='inline mr-1' /> Login
               </Link>
               <Link
-                href='register.html'
+                href='/register'
                 className='mr-3 text-gray-800 hover:text-gray-600'
               >
                 <FaUser className='inline mr-1' /> Register
@@ -61,7 +61,7 @@ const Header = () => {
                 <FaBuilding className='inline mr-1' /> My Rooms
               </Link>
               <Link
-                href='login.html'
+                href='/login'
                 className='mx-3 text-gray-800 hover:text-gray-600'
               >
                 <FaSignOutAlt className='inline mr-1' /> Sign Out

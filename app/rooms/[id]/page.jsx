@@ -1,13 +1,13 @@
-import BookingRoom from "@/components/BookingRoom";
+import BookingRoom from "../../../components/BookingRoom";
 import Image from "next/image";
 import Link from "next/link";
-import rooms from "@/data/rooms.json";
-import Heading from "@/components/Heading";
+import Heading from "../../../components/Heading";
 import { FaChevronLeft } from "react-icons/fa";
+import getSingleRoom from "../../actions/getSingleRoom";
 
-const RoomPage = ({ params }) => {
+const RoomPage = async ({ params }) => {
   const { id } = params;
-  const room = rooms.find((room) => room.$id === id);
+  const room = await getSingleRoom(id);
 
   if (!room) {
     return <Heading title='Room Not Found' />;
