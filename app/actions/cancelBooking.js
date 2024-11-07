@@ -7,7 +7,7 @@ import checkAuth from "./checkAuth";
 import { revalidatePath } from "next/cache";
 
 async function cancelBooking(bookingId) {
-  const sessionCookie = await cookies().get("appwrite-session");
+  const sessionCookie = await (await cookies()).get("appwrite-session");
   if (!sessionCookie) {
     redirect("/login");
   }

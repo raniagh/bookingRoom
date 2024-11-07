@@ -4,7 +4,7 @@ const { cookies } = require("next/headers");
 import { createSessionClient } from "../../config/appwrite";
 
 async function checkAuth() {
-  const sessionCookie = await cookies().get("appwrite-session");
+  const sessionCookie = await (await cookies()).get("appwrite-session");
 
   if (!sessionCookie) {
     return {

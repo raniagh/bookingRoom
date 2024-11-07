@@ -7,10 +7,10 @@ import checkAuth from "./checkAuth";
 import { ID } from "node-appwrite";
 import { revalidatePath } from "next/cache";
 import checkRoomAvailability from "./checkRoomAvailability";
-import { error } from "console";
 
 async function bookRoom(previousState, formData) {
-  const sessionCookie = await cookies().get("appwrite-session");
+  const sessionCookie = await (await cookies()).get("appwrite-session");
+
   if (!sessionCookie) {
     redirect("/login");
   }

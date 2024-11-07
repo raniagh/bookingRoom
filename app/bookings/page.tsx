@@ -5,6 +5,11 @@ import BookedRoomCard from "../../components/BookedRoomCard";
 const BookingsPage = async () => {
   const bookings = await getMyBookings();
 
+  if (!Array.isArray(bookings)) {
+    // If bookings is not an array, it's the error object
+    return <p className='text-red-600'>{bookings.error}</p>;
+  }
+
   return (
     <>
       <Heading title='My Bookings' />
