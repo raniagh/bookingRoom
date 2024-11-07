@@ -3,6 +3,7 @@
 import { ID } from "node-appwrite";
 import { createAdminClient } from "../../config/appwrite";
 import checkAuth from "./checkAuth";
+import { revalidatePath } from "next/cache";
 
 async function createRoom(previousState, formData) {
   //Get databases instance
@@ -53,7 +54,7 @@ async function createRoom(previousState, formData) {
         image: imageID,
       }
     );
-
+    revalidatePath("/", "layout");
     return {
       success: true,
     };

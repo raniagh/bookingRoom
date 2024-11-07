@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { createSessionClient } from "../../config/appwrite";
 import { cookies } from "next/headers";
 import { Query } from "node-appwrite";
+import { revalidatePath } from "next/cache";
 
 async function deleteRoom(roomId) {
   const sessionCookie = await cookies().get("appwrite-session");
@@ -36,7 +37,9 @@ async function deleteRoom(roomId) {
         process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ROOMS,
         roomToDelete.$id
       );
-
+      // Revalidate my rooms and all rooms
+      revalidatePath("/rooms/my", "layout");
+      revalidatePath("/", "layout");
       return {
         success: true,
       };
