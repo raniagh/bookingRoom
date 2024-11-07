@@ -6,7 +6,9 @@ import checkAuth from "./checkAuth";
 import { Query } from "node-appwrite";
 
 async function getMyBookings() {
-  const sessionCookie = await cookies().get("appwrite-session");
+  const cookie = await cookies();
+  const sessionCookie = await cookie.get("appwrite-session");
+
   if (!sessionCookie) {
     redirect("/login");
   }
